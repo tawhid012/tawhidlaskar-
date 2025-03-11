@@ -1,0 +1,245 @@
+import React, { useState } from 'react';
+import { Github, Linkedin, Twitter, Instagram, Code2, Server, Smartphone, Tool, Mail, User, MapPin, Link2, ExternalLink } from 'lucide-react';
+
+function App() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log({ name, email, message });
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white py-2 px-6 flex justify-between items-center fixed w-full top-0 z-50 shadow-sm">
+        <div className="flex items-center gap-2">
+          <span className="text-blue-600 font-mono text-sm">&lt;/&gt;</span>
+          <span className="text-xl font-bold text-blue-600">Tawhid Laskar</span>
+        </div>
+        <button className="bg-blue-600 text-white px-4 py-1.5 rounded-full flex items-center gap-2 text-sm">
+          <Mail size={14} />
+          Get In Touch
+        </button>
+      </header>
+
+      {/* Hero Section */}
+      <section className="pt-16 px-6 bg-gradient-to-b from-blue-50 to-white min-h-screen">
+        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+          Building Digital<br />Solutions with<br />Purpose
+        </h1>
+        <p className="text-lg text-gray-700 mb-8 max-w-2xl">
+          I'm Tawhid, a software engineer and entrepreneur passionate about building digital solutions. I run Limux Agency, providing affordable web development, SEO, and branding to help businesses grow. I'm also working on Nexora Trading Academy and exploring automation tools like Telegram bots. Let's connect and create something great!
+        </p>
+        <button className="bg-blue-600 text-white px-8 py-3 rounded-full flex items-center gap-2 mb-8">
+          <ExternalLink size={20} />
+          View Projects
+        </button>
+        <div className="flex gap-6">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer"><Github /></a>
+          <a href="https://medium.com" target="_blank" rel="noopener noreferrer"><div className="w-6 h-6">M</div></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><Linkedin /></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><Instagram /></a>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="py-20 px-6">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="text-2xl">📂</div>
+          <h2 className="text-3xl font-bold">Featured Projects</h2>
+        </div>
+        <div className="space-y-8">
+          <ProjectCard
+            title="Limux Agency"
+            description="Modern digital agency platform with comprehensive service management"
+            image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+            tech={['React', 'Node.js', 'MongoDB']}
+          />
+          <ProjectCard
+            title="ParaNotes"
+            description="Feature-rich note-taking application with cloud synchronization"
+            image="https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=800&q=80"
+            tech={['Vue.js', 'Express', 'PostgreSQL']}
+          />
+          <ProjectCard
+            title="Trade with XO"
+            description="Advanced trading platform with real-time market analysis"
+            image="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80"
+            tech={['React', 'Python', 'Redis']}
+          />
+          <ProjectCard
+            title="OneChain"
+            description="Comprehensive blockchain explorer and analytics platform"
+            image="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80"
+            tech={['Web3', 'Node.js', 'GraphQL']}
+          />
+        </div>
+      </section>
+
+      {/* Technical Skills */}
+      <section className="py-20 px-6 bg-blue-50">
+        <div className="flex items-center gap-3 mb-8">
+          <Code2 size={24} />
+          <h2 className="text-3xl font-bold">Technical Skills</h2>
+        </div>
+        <div className="space-y-6">
+          <SkillCard
+            icon={<Code2 />}
+            title="Frontend Development"
+            skills={['HTML5', 'CSS3', 'JavaScript', 'React']}
+          />
+          <SkillCard
+            icon={<Server />}
+            title="Backend Development"
+            skills={['Node.js', 'Python', 'SQL', 'MongoDB']}
+          />
+          <SkillCard
+            icon={<Smartphone />}
+            title="Responsive Design"
+            skills={['Mobile-First', 'Cross-Platform']}
+          />
+          <SkillCard
+            icon={<Tool />}
+            title="Development Tools"
+            skills={['Git', 'Docker', 'AWS', 'CI/CD']}
+          />
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section className="py-20 px-6">
+        <div className="flex items-center gap-3 mb-8">
+          <Mail size={24} />
+          <h2 className="text-3xl font-bold">Get in Touch</h2>
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-6 max-w-md">
+          <div>
+            <label className="flex items-center gap-2 mb-2">
+              <User size={20} />
+              Name
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full p-3 rounded-lg border border-gray-300"
+            />
+          </div>
+          <div>
+            <label className="flex items-center gap-2 mb-2">
+              <Mail size={20} />
+              Email
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-3 rounded-lg border border-gray-300"
+            />
+          </div>
+          <div>
+            <label className="flex items-center gap-2 mb-2">
+              <MessageIcon />
+              Message
+            </label>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full p-3 rounded-lg border border-gray-300 h-32"
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-6 py-3 rounded-full flex items-center gap-2"
+          >
+            <Mail size={20} />
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-12">
+            <h3 className="flex items-center gap-2 mb-4">
+              <User size={20} />
+              About Me
+            </h3>
+            <p className="text-gray-400">
+              Full Stack Developer passionate about creating innovative web solutions and delivering exceptional user experiences.
+            </p>
+          </div>
+          <div className="mb-12">
+            <div className="flex items-center gap-2 mb-4">
+              <Mail size={20} />
+              <span>Email: contact@tawhidlaskar.dev</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin size={20} />
+              <span>Location: Assam, India</span>
+            </div>
+          </div>
+          <div className="mb-12">
+            <h3 className="flex items-center gap-2 mb-4">
+              <Link2 size={20} />
+              Quick Links
+            </h3>
+            <nav className="space-y-2">
+              <a href="#" className="block text-gray-400 hover:text-white">Home</a>
+              <a href="#" className="block text-gray-400 hover:text-white">Projects</a>
+              <a href="#" className="block text-gray-400 hover:text-white">Skills</a>
+              <a href="#" className="block text-gray-400 hover:text-white">Contact</a>
+            </nav>
+          </div>
+          <div className="mb-8">
+            <h3 className="flex items-center gap-2 mb-4">
+              <Link2 size={20} />
+              Connect With Me
+            </h3>
+            <div className="flex gap-4">
+              <a href="#" className="text-gray-400 hover:text-white"><Github size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-white">M</a>
+              <a href="#" className="text-gray-400 hover:text-white"><Linkedin size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-white"><Twitter size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-white"><Instagram size={20} /></a>
+            </div>
+          </div>
+          <div className="text-center text-gray-400">
+            <p>© 2024 Tawhid Laskar. All rights reserved.</p>
+            <p className="flex items-center justify-center gap-1 mt-2">
+              &lt;/&gt; with ❤️
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function ProjectCard({ title, description, image, tech }) {
+  return (
+    <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <div className="p-6">
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-gray-600 mb-4">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tech.map((t) => (
+            <span key={t} className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">
+              {t}
+            </span>
+          ))}
+        </div>
+        <div className="flex gap-4">
+          <a href="#" className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+            <ExternalLink size={16} />
+            Live Demo
+          </a>
+          <a href="#" className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg flex items-center gap-2">
+            <Code2 size={16} />
+            Source Co
